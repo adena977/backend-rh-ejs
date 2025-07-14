@@ -1,0 +1,54 @@
+<div class="container mt-4">
+    <h2>Documents RH</h2>
+    <a href="/documents/ajouter" class="btn btn-primary mb-3">Ajouter un document</a>
+
+    <% if (documents.length===0) { %>
+        <div class="alert alert-info">Aucun document enregistré.</div>
+        <% } else { %>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Employé</th>
+                        <th>Type</th>
+                        <th>Titre</th>
+                        <th>Fichier</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% documents.forEach(doc=> { %>
+                        <tr>
+                            <td>
+                                <%= doc.nom %>
+                                    <%= doc.prenom %>
+                            </td>
+                            <td>
+                                <%= doc.type %>
+                            </td>
+                            <td>
+                                <%= doc.titre %>
+                            </td>
+                            <td>
+                                <% if (doc.fichier_url) { %>
+                                    <a href="<%= doc.fichier_url %>" target="_blank">Voir</a>
+                                    <% } else { %>
+                                        -
+                                        <% } %>
+                            </td>
+                            <td>
+                                <%= doc.date_upload.toLocaleString() %>
+                            </td>
+                            <td>
+                                <a href="/documents/modifier/<%= doc.id %>" class="btn btn-sm btn-warning">Modifier</a>
+                                <form action="/documents/supprimer/<%= doc.id %>" method="POST" style="display:inline;">
+                                    <button type="submit" class="btn btn-sm btn-danger"
+                                        onclick="return confirm('Supprimer ?')">Supprimer</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+            <% } %>
+</div>

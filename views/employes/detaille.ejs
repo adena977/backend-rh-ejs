@@ -1,0 +1,80 @@
+
+<div class="container mt-4">
+ 
+
+  <table class="table table-bordered mt-3">
+    <tr>
+      <th>Nom</th>
+      <td><%= employe.nom %></td>
+    </tr>
+    <tr>
+      <th>Prénom</th>
+      <td><%= employe.prenom %></td>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td><%= employe.email %></td>
+    </tr>
+    <tr>
+      <th>Téléphone</th>
+      <td><%= employe.telephone %></td>
+    </tr>
+    <tr>
+      <th>Poste</th>
+      <td><%= employe.poste %></td>
+    </tr>
+    <tr>
+      <th>Service</th>
+      <td><%= employe.service || 'Non défini' %></td>
+    </tr>
+    <tr>
+      <th>Date d'embauche</th>
+      <td><%= new Date(employe.date_embauche).toLocaleDateString() %></td>
+    </tr>
+    <tr>
+      <th>Salaire</th>
+      <td><%= employe.salaire_base %> FDJ</td>
+    </tr>
+    <tr>
+      <th>Statut</th>
+      <td><%= employe.statut %></td>
+    </tr>
+
+    <tr>
+      <th>Photo</th>
+      <td>
+        <% if (employe.photo) { %>
+          <img src="/uploads/<%= employe.photo %>" alt="Photo" width="100">
+        <% } else { %>
+          Aucune
+        <% } %>
+      </td>
+    </tr>
+
+    <tr>
+      <th>CV</th>
+      <td>
+        <% if (employe.cv) { %>
+          <a href="/uploads/<%= employe.cv %>" class="btn btn-sm btn-outline-primary" target="_blank" download>Télécharger le CV</a>
+        <% } else { %>
+          Aucun
+        <% } %>
+      </td>
+    </tr>
+
+    <tr>
+      <th>Contrat</th>
+      <td>
+        <% if (employe.contrat) { %>
+          <a href="/uploads/<%= employe.contrat %>" class="btn btn-sm btn-outline-success" target="_blank" download>Télécharger le contrat</a>
+        <% } else { %>
+          Aucun
+        <% } %>
+      </td>
+    </tr>
+  </table>
+
+  <a href="/employes" class="btn btn-secondary mt-3">⬅ Retour</a>
+</div>
+
+<%- include('../partials/footer') %>

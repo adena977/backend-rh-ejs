@@ -1,0 +1,39 @@
+
+<div class="card">
+  <div class="card-header">
+    <h5>Mon profil</h5>
+  </div>
+  <div class="card-body">
+    <form action="/employes/profil" method="POST" enctype="multipart/form-data">
+      <div class="mb-3">
+        <label>Nom</label>
+        <input type="text" class="form-control" value="<%= employe.nom %>" disabled>
+      </div>
+      <div class="mb-3">
+        <label>Prénom</label>
+        <input type="text" class="form-control" value="<%= employe.prenom %>" disabled>
+      </div>
+      <div class="mb-3">
+        <label>Email</label>
+        <input type="email" class="form-control" value="<%= employe.email %>" disabled>
+      </div>
+      <div class="mb-3">
+        <label>Téléphone</label>
+        <input type="text" name="telephone" class="form-control" value="<%= employe.telephone || '' %>">
+      </div>
+      <div class="mb-3">
+        <label>Photo actuelle</label><br>
+        <% if (employe.photo) { %>
+          <img src="/uploads/<%= employe.photo %>" alt="Photo" width="100">
+        <% } else { %>
+          Aucune photo
+        <% } %>
+      </div>
+      <div class="mb-3">
+        <label>Changer la photo</label>
+        <input type="file" name="photo" class="form-control">
+      </div>
+      <button type="submit" class="btn btn-primary">Mettre à jour</button>
+    </form>
+  </div>
+</div>

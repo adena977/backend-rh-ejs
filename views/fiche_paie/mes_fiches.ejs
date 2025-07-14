@@ -1,0 +1,44 @@
+<div class="card">
+  <div class="card-header pb-0">
+    <h6>Mes fiches de paie</h6>
+  </div>
+  <div class="card-body px-0 pt-0 pb-2">
+    <div class="table-responsive p-0">
+      <table class="table align-items-center mb-0">
+        <thead>
+          <tr>
+            <th>Mois</th>
+            <th>Année</th>
+            <th>Salaire brut</th>
+            <th>Heures supp.</th>
+            <th>Prime</th>
+            <th>Retenue</th>
+            <th>Salaire net</th>
+            <th>PDF</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% fiches.forEach(fiche => { %>
+            <tr>
+              <td><%= fiche.mois %></td>
+              <td><%= fiche.annee %></td>
+              <td><%= fiche.salaire_brut.toFixed(2) %> FDJ</td>
+              <td><%= fiche.heures_sup %>h</td>
+              <td><%= fiche.prime.toFixed(2) %></td>
+              <td><%= fiche.retenue.toFixed(2) %></td>
+              <td><strong><%= fiche.salaire_net.toFixed(2) %> FDJ</strong></td>
+              <td>
+                <% if (fiche.pdf_url) { %>
+                  <a href="<%= fiche.pdf_url %>" target="_blank" class="btn btn-sm btn-info">📄 Voir PDF</a>
+                <% } else { %>
+                  <span class="text-danger">Non généré</span>
+                <% } %>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

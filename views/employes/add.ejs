@@ -1,0 +1,86 @@
+
+<div class="container mt-3">
+
+  <form action="/employes/ajouter" method="POST" enctype="multipart/form-data">
+    <div class="row">
+      
+
+      <div class="col-md-6 mb-3">
+        <label for="nom" class="form-label">Nom</label>
+        <input type="text" class="form-control" id="nom" name="nom" placeholder="Entrez le nom" required>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="prenom" class="form-label">Prénom</label>
+        <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Entrez le prénom" required>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="exemple@mail.com" required>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="telephone" class="form-label">Téléphone</label>
+        <input type="text" class="form-control" id="telephone" name="telephone" placeholder="77 00 00 00" required>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="poste" class="form-label">Poste</label>
+        <input type="text" class="form-control" id="poste" name="poste" placeholder="Intitulé du poste" required>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="service_id" class="form-label">Service</label>
+        <select name="service_id" id="service_id" class="form-control" required>
+          <option value="">-- Sélectionner un service --</option>
+          <% if (services && services.length > 0) { %>
+            <% services.forEach(s => { %>
+              <option value="<%= s.id %>"><%= s.nom %></option>
+            <% }) %>
+          <% } %>
+        </select>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="date_embauche" class="form-label">Date d'embauche</label>
+        <input type="date" class="form-control" id="date_embauche" name="date_embauche" required>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="salaire_base" class="form-label">Salaire de base</label>
+        <input type="number" class="form-control" id="salaire_base" name="salaire_base" placeholder="Ex: 300000" required>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label for="photo" class="form-label">Photo</label>
+        <input type="file" class="form-control" id="photo" name="photo">
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label for="cv" class="form-label">CV</label>
+        <input type="file" class="form-control" id="cv" name="cv">
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label for="contrat" class="form-label">Contrat</label>
+        <input type="file" class="form-control" id="contrat" name="contrat">
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="statut" class="form-label">Statut</label>
+        <select name="statut" id="statut" class="form-control" required>
+          <option value="">-- Sélectionner --</option>
+          <option value="actif">Actif</option>
+          <option value="inactif">Inactif</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <button type="submit" class="btn btn-primary">Enregistrer</button>
+      <a href="/employes" class="btn btn-secondary">Annuler</a>
+    </div>
+  </form>
+</div>
+

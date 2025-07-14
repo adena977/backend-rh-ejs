@@ -1,0 +1,23 @@
+<!-- 📁 views/formations/add.ejs -->
+<div class="container py-4">
+    <h1>Ajouter une formation</h1>
+    <form method="POST" action="/formations/ajouter">
+        <div class="mb-3">
+            <label>Titre</label>
+            <input type="text" name="titre" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label>Date début</label>
+            <input type="date" name="date_debut" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label>Date fin</label>
+            <input type="date" name="date_fin" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label>Formateur</label>
+            <input type="text" name="formateur" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-success">Enregistrer</button>
+    </form>
+</div>

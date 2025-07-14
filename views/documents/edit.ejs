@@ -1,0 +1,34 @@
+<div class="container mt-4">
+    <h2>Modifier le document</h2>
+    <form action="/documents/modifier/<%= document.id %>" method="POST" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label>Employé</label>
+            <select name="employe_id" class="form-select">
+                <option value="">Aucun</option>
+                <% employes.forEach(e=> { %>
+                    <option value="<%= e.id %>" <%=e.id==document.employe_id ? 'selected' : '' %>><%= e.nom %>
+                            <%= e.prenom %>
+                    </option>
+                    <% }) %>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label>Type</label>
+            <input type="text" name="type" class="form-control" value="<%= document.type %>" required>
+        </div>
+        <div class="mb-3">
+            <label>Titre</label>
+            <input type="text" name="titre" class="form-control" value="<%= document.titre %>" required>
+        </div>
+        <div class="mb-3">
+            <label>Nouveau fichier (facultatif)</label>
+            <input type="file" name="fichier" class="form-control">
+        </div>
+        <% if (document.fichier_url) { %>
+            <div class="mb-3">
+                <strong>Fichier actuel:</strong> <a href="<%= document.fichier_url %>" target="_blank">Voir</a>
+            </div>
+            <% } %>
+                <button type="submit" class="btn btn-primary">Mettre à jour</button>
+    </form>
+</div>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/head') %>
+
+  <body class="g-sidenav-show bg-gray-100">
+    <!-- Sidebar -->
+    <%- include('partials/sidebar', { page: page }) %>
+
+      <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
+        <!-- Navbar -->
+        <%- include('partials/navbar') %>
+
+          <!-- Contenu -->
+          <div class="container-fluid py-2">
+            <%- body %>
+          </div>
+
+          <!-- Footer (optionnel) -->
+      </main>
+
+
+      <!-- Plugin configurateur (optionnel) -->
+      <%- include('partials/t') %>
+        <script>
+          const markForm = document.getElementById('mark-read-form');
+          if (markForm) {
+            markForm.addEventListener('submit', async function (e) {
+              e.preventDefault();
+              const res = await fetch('/notifications/marquer-comme-lu', {
+                method: 'POST'
+              });
+              if (res.ok) location.reload();
+            });
+          }
+        </script>
+        <!-- Scripts JS -->
+        <%- include('partials/script') %>
+
+  </body>
+
+</html>

@@ -1,0 +1,193 @@
+<aside class="sidenav navbar navbar-vertical navbar-expand-xs border-radius-lg fixed-start ms-2 bg-white my-2"
+  id="sidenav-main">
+  <div class="sidenav-header">
+    <i class="fas fa-times p-3 cursor-pointer text-dark opacity-5 position-absolute end-0 top-0 d-xl-none"
+      id="iconSidenav"></i>
+    <a class="navbar-brand px-4 py-3 m-0" href="/">
+      <img src="/assets/img/logo-ct-dark.png" class="navbar-brand-img" width="26" height="26" alt="EDD RH">
+      <span class="ms-1 text-sm text-dark">RH</span>
+    </a>
+  </div>
+
+  <hr class="horizontal dark mt-0 mb-2">
+
+  <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main">
+    <ul class="navbar-nav">
+
+
+      <!-- Section Admin / Manager -->
+      <% if (user && (user.role==='admin' || user.role==='manager' )) { %>
+        <!-- Section commune : Dashboard -->
+        <li class="nav-item">
+          <a class="nav-link <%= (page === 'dashboard') ? 'active bg-gradient-dark text-white' : 'text-dark' %>"
+            href="/">
+            <i class="material-symbols-rounded opacity-5">dashboard_customize</i>
+            <span class="nav-link-text ms-1">Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link <%= (page === 'employes') ? 'active bg-gradient-dark text-white' : 'text-dark' %>"
+            href="/employes">
+            <i class="material-symbols-rounded opacity-5">people</i>
+            <span class="nav-link-text ms-1">Employés</span>
+          </a>
+        </li>
+
+
+        <li class="nav-item">
+          <a class="nav-link <%= (page === 'services') ? 'active bg-gradient-dark text-white' : 'text-dark' %>"
+            href="/services">
+            <i class="material-symbols-rounded opacity-5">business</i>
+            <span class="nav-link-text ms-1">Services</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link <%= (page === 'presences') ? 'active bg-gradient-dark text-white' : 'text-dark' %>"
+            href="/presences">
+            <i class="material-symbols-rounded opacity-5">event_available</i>
+            <span class="nav-link-text ms-1">Présences</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link <%= (page === 'absences') ? 'active bg-gradient-dark text-white' : 'text-dark' %>"
+            href="/absences">
+            <i class="material-symbols-rounded opacity-5">bookmark_manager</i>
+            <span class="nav-link-text ms-1">Absences</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link <%= (page === 'conges') ? 'active bg-gradient-dark text-white' : 'text-dark' %>"
+            href="/conges">
+            <i class="material-symbols-rounded opacity-5">beach_access</i>
+            <span class="nav-link-text ms-1">Congés</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link <%= (page === 'fiche_paie') ? 'active bg-gradient-dark text-white' : 'text-dark' %>"
+            href="/fiche_paie">
+            <i class="material-symbols-rounded opacity-5">paid</i>
+            <span class="nav-link-text ms-1">Fiches de paie</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link <%= (page === 'evaluations') ? 'active bg-gradient-dark text-white' : 'text-dark' %>"
+            href="/evaluations">
+            <i class="material-symbols-rounded opacity-5">grading</i>
+            <span class="nav-link-text ms-1">Évaluations</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link <%= (page === 'mouvements_rh') ? 'active bg-gradient-dark text-white' : 'text-dark' %>"
+            href="/mouvements_rh">
+            <i class="material-symbols-rounded opacity-5">partner_exchange</i>
+            <span class="nav-link-text ms-1">mouvements_rh</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link <%= (page === 'documents') ? 'active bg-gradient-dark text-white' : 'text-dark' %>"
+            href="/documents">
+            <i class="material-symbols-rounded opacity-5">folder</i>
+            <span class="nav-link-text ms-1">Documents RH</span>
+          </a>
+        </li>
+
+        <!-- Administration -->
+        <li class="nav-item mt-3">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs text-dark font-weight-bolder opacity-5">Administration</h6>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link <%= (page === 'utilisateurs') ? 'active bg-gradient-dark text-white' : 'text-dark' %>"
+            href="/utilisateurs">
+            <i class="material-symbols-rounded opacity-5">admin_panel_settings</i>
+            <span class="nav-link-text ms-1">Utilisateurs</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link <%= (page === 'logs') ? 'active bg-gradient-dark text-white' : 'text-dark' %>"
+            href="/logs">
+            <i class="material-symbols-rounded opacity-5">history</i>
+            <span class="nav-link-text ms-1">Logs</span>
+          </a>
+        </li>
+        <% } %>
+
+          <!-- Section Employé -->
+          <% if (user && user.role==='employe' ) { %>
+            <li class="nav-item">
+              <a class="nav-link <%= (page === 'dashboard') ? 'active bg-gradient-dark text-white' : 'text-dark' %>"
+                href="/dashboard/employe">
+                <i class="material-symbols-rounded opacity-5">dashboard_customize</i>
+                <span class="nav-link-text ms-1">Mon Dashboard</span>
+              </a>
+            </li>
+
+
+            <li class="nav-item">
+              <a class="nav-link <%= (page === 'profil') ? 'active bg-gradient-dark text-white' : 'text-dark' %>"
+                href="/employes/profil">
+                <i class="material-symbols-rounded opacity-5">account_circle</i>
+                <span class="nav-link-text ms-1">Mon Profil</span>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link <%= (page === 'absences') ? 'active bg-gradient-dark text-white' : 'text-dark' %>"
+                href="/absences/mes-absences">
+                <i class="material-symbols-rounded opacity-5">bookmark_manager</i>
+                <span class="nav-link-text ms-1">Mes absences</span>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link <%= (page === 'conges') ? 'active bg-gradient-dark text-white' : 'text-dark' %>"
+                href="/conges/mes-conges">
+                <i class="material-symbols-rounded opacity-5">beach_access</i>
+                <span class="nav-link-text ms-1">Mes congés</span>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link <%= (page === 'fiche_paie') ? 'active bg-gradient-dark text-white' : 'text-dark' %>"
+                href="/fiche_paie/mes-fiches">
+                <i class="material-symbols-rounded opacity-5">paid</i>
+                <span class="nav-link-text ms-1">Mes fiches</span>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link <%= (page === 'evaluations') ? 'active bg-gradient-dark text-white' : 'text-dark' %>"
+                href="/evaluations/mes">
+                <i class="material-symbols-rounded opacity-5">grading</i>
+                <span class="nav-link-text ms-1">Mes évaluations</span>
+              </a>
+            </li>
+            <% } %>
+
+              <!-- Section commune : Formations -->
+              <li class="nav-item">
+                <a class="nav-link <%= (page === 'formations') ? 'active bg-gradient-dark text-white' : 'text-dark' %>"
+                  href="/formations">
+                  <i class="material-symbols-rounded opacity-5">school</i>
+                  <span class="nav-link-text ms-1">Formations</span>
+                </a>
+              </li>
+
+              <!-- Déconnexion -->
+              <li class="nav-item">
+                <a class="nav-link text-danger" href="/logout">
+                  <i class="material-symbols-rounded opacity-5">logout</i>
+                  <span class="nav-link-text ms-1">Déconnexion</span>
+                </a>
+              </li>
+    </ul>
+  </div>
+</aside>

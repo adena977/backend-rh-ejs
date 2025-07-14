@@ -1,0 +1,51 @@
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Mes congés</h2>
+        <a href="/conges/demande" class="btn btn-primary">
+            <i class="bi bi-plus-circle me-1"></i> Faire une demande
+        </a>
+    </div>
+
+    <% if (conges.length===0) { %>
+        <div class="alert alert-info">Aucune demande de congé pour le moment.</div>
+        <% } else { %>
+            <table class="table table-bordered table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Type</th>
+                        <th>Motif</th>
+                        <th>Début</th>
+                        <th>Fin</th>
+                        <th>Statut</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% conges.forEach(c=> { %>
+                        <tr>
+                            <td>
+                                <%= c.type %>
+                            </td>
+                            <td>
+                                <%= c.motif %>
+                            </td>
+                            <td>
+                                <%= new Date(c.date_debut).toLocaleDateString() %>
+                            </td>
+                            <td>
+                                <%= new Date(c.date_fin).toLocaleDateString() %>
+                            </td>
+                            <td>
+                                <% if (c.statut==='accepté' ) { %>
+                                    <span class="badge bg-success">Accepté</span>
+                                    <% } else if (c.statut==='refusé' ) { %>
+                                        <span class="badge bg-danger">Refusé</span>
+                                        <% } else { %>
+                                            <span class="badge bg-warning text-dark">En attente</span>
+                                            <% } %>
+                            </td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+            <% } %>
+</div>

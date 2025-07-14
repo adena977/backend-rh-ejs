@@ -1,0 +1,29 @@
+📌 Module : Suivi de Présences
+🧩 Fonctionnalités à implémenter :
+✅ Afficher les présences de tous les employés (tableau filtrable)
+
+➕ Ajouter une présence (employé, date, heure d’arrivée, heure de départ, statut)
+
+✏️ Modifier une présence (si erreur)
+
+🗑️ Supprimer une entrée
+
+📊 Statistiques (ex. : taux de présence par employé ou par service)
+
+🗃️ Table presences (déjà dans ta base) :
+| id | employe_id | date_presence | heure_arrivee | heure_depart | statut (Présent, Absent, Retard, etc.) |
+
+🛠️ Étapes proposées :
+🔧 Modèle presenceModel.js
+
+🧠 Contrôleur presenceController.js
+
+🌐 Routes /presences
+
+📄 Vues EJS :
+
+views/presences/index.ejs → liste
+
+views/presences/add.ejs → formulaire ajout
+
+views/presences/edit.ejs → modification

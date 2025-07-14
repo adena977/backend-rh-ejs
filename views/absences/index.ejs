@@ -1,0 +1,48 @@
+<h4 class="mb-4">Liste des absences exceptionnelles</h4>
+
+<a href="/absences/ajouter" class="btn btn-primary mb-3">Ajouter une absence</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Employé</th>
+            <th>Date début</th>
+            <th>Date fin</th>
+            <th>Motif</th>
+            <th>Statut</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% absences.forEach(a=> { %>
+            <tr>
+                <td>
+                    <%= a.nom %>
+                        <%= a.prenom %>
+                </td>
+                <td>
+                    <%= a.date_debut %>
+                </td>
+                <td>
+                    <%= a.date_fin %>
+                </td>
+                <td>
+                    <%= a.motif %>
+                </td>
+                <td>
+                    <%= a.statut %>
+                </td>
+                <td>
+                    <a href="/absences/modifier/<%= a.id %>" class="btn btn-md btn-warning "> <i
+                            class="material-symbols-rounded">edit</i></a>
+                    <form action="/absences/supprimer/<%= a.id %>" method="POST" class="d-inline">
+                        <button type="submit" class="btn btn-md btn-danger" onclick="return confirm('Supprimer ?')">
+                            <i class="material-symbols-rounded">delete</i>
+                        </button>
+
+                    </form>
+                </td>
+            </tr>
+            <% }) %>
+    </tbody>
+</table>

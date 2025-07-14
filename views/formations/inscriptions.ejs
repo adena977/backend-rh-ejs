@@ -1,0 +1,54 @@
+<!-- 📁 views/formations/inscriptions.ejs -->
+<div class="container py-4">
+    <h1>Inscriptions à la formation : <%= formation.titre %>
+    </h1>
+    <form method="POST" action="/formations/<%= formation.id %>/inscriptions">
+        <div class="mb-3">
+            <label>Ajouter un employé</label>
+            <select name="employe_id" class="form-select">
+                <% employes.forEach(emp=> { %>
+                    <option value="<%= emp.id %>">
+                        <%= emp.nom %>
+                            <%= emp.prenom %>
+                    </option>
+                    <% }) %>
+            </select>
+        </div>
+        <button class="btn btn-primary">Inscrire</button>
+    </form>
+
+    <h2 class="mt-4">Employés inscrits</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Statut</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% employesInscrits.forEach(p=> { %>
+                <tr>
+                    <td>
+                        <%= p.nom %>
+                            <%= p.prenom %>
+                    </td>
+                    <td>
+                        <%= p.statut %>
+                    </td>
+                    <td>
+                        <form method="POST" action="/formations/<%= formation.id %>/modifier-statut">
+                            <input type="hidden" name="employe_id" value="<%= p.employe_id %>">
+                            <select name="statut" onchange="this.form.submit()" class="form-select form-select-sm">
+                                <option <%=p.statut==='inscrit' ? 'selected' : '' %>>inscrit</option>
+                                <option <%=p.statut==='termine' ? 'selected' : '' %>>termine</option>
+                                <option <%=p.statut==='abandonne' ? 'selected' : '' %>>abandonne</option>
+                            </select>
+                        </form>
+                    </td>
+                </tr>
+                <% }) %>
+
+        </tbody>
+    </table>
+</div>

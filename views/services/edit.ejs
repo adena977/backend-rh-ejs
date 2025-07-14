@@ -1,0 +1,19 @@
+<div class="container mt-4">
+    <h2>Modifier le service</h2>
+
+    <form action="/services/modifier/<%= service.id %>" method="POST">
+        <div class="mb-3">
+            <label for="nom" class="form-label">Nom du service</label>
+            <input type="text" class="form-control" name="nom" id="nom" value="<%= service.nom %>" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" name="description" id="description"
+                rows="4"><%= service.description %></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">✅ Mettre à jour</button>
+        <a href="/services" class="btn btn-secondary">Retour</a>
+    </form>
+</div>

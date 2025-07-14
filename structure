@@ -1,0 +1,61 @@
+backend-rh-ejs/
+├── config/                     # Configuration
+│   └── db.js                  # Connexion MySQL
+│   └── dotenv.js              # Variables d’environnement
+│
+├── controllers/               # Logique métier
+│   ├── employeController.js
+│   ├── utilisateurController.js
+│   ├── congeController.js
+│   ├── paieController.js
+│   └── ... (autres modules RH)
+│
+├── middlewares/              # Authentification, rôles, erreurs
+│   ├── auth.js
+│   ├── role.js
+│   └── errorHandler.js
+│
+├── models/                   # Requêtes SQL et modèles de données
+│   ├── employeModel.js
+│   ├── utilisateurModel.js
+│   ├── congeModel.js
+│   └── ...
+│
+├── routes/                   # Définition des routes Express
+│   ├── employeRoutes.js
+│   ├── utilisateurRoutes.js
+│   ├── congeRoutes.js
+│   └── dashboardRoutes.js
+│
+├── public/                   # Dossier statique (accessible côté client)
+│   ├── assets/               # Fichiers de Material Dashboard (css, js, images, fonts)
+│   ├── uploads/              # Uploads : photos, contrats, fiches paie...
+│   ├── css/                  # CSS custom
+│   ├── js/                   # JS custom
+│
+├── views/                    # Pages EJS (vue côté serveur)
+│   ├── partials/             # Header, footer, navbar
+│   │   ├── sidebar.ejs
+│   │   ├── footer.ejs
+│   │   └── navbar.ejs
+│   ├── employes/
+│   │   ├── index.ejs         # Liste des employés
+│   │   ├── add.ejs           # Formulaire ajout employé
+│   │   └── edit.ejs          # Modification employé
+│   ├── conges/
+│   ├── paie/
+│   ├── utilisateurs/
+│   ├── login.ejs
+│   ├── register.ejs
+│   ├── dashboard.ejs         # Page principale du tableau de bord RH
+│   └── 404.ejs
+│
+├── .env                      # Variables d’environnement (port, db, secret...)
+├── app.js                    # Configuration d’Express, sessions, routes
+├── server.js                 # Point d’entrée du serveur
+├── package.json              # Dépendances
+└── README.md                 # Documentation du projet
+
+
+ # les independance que je installe 
+npm install express ejs mysql2 express-session dotenv bcryptjs connect-flash express-ejs-layouts method-override

@@ -1,0 +1,72 @@
+
+
+<style>
+  .form-control {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+
+  .form-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background-color: #007bff;
+    color: white;
+  }
+
+  .btn-secondary {
+    background-color: #6c757d;
+    color: white;
+  }
+
+
+
+  .mb-3 {
+    margin-bottom: 1rem;
+  }
+
+  .mt-4 {
+    margin-top: 1.5rem;
+  }
+</style>
+
+<div class="container mt-5">
+  <h3>Scan de présence</h3>
+  <!-- QR code de l'utilisateur -->
+<% if (user && user.code_employe) { %>
+  <div class="text-center my-4">
+    <h5>Mon QR Code :</h5>
+    <img src="/qrcodes/<%= user.code_employe %>.png" alt="QR Code" width="150">
+  </div>
+<% } %>
+
+
+  <!-- Formulaire de scan (manuel ou via QR) -->
+  <form action="/presences/scan" method="POST">
+    <div class="form-group">
+      <label for="code_employe">Code Employé :</label>
+      <input type="text" name="code_employe" class="form-control" placeholder="Scannez ou entrez le code" required>
+    </div>
+    <button type="submit" class="btn btn-primary mt-2">Valider</button>
+  </form>
+
+  <% if (message && message.length > 0) { %>
+    <div class="alert alert-info mt-3"><%= message %></div>
+  <% } %>
+</div>

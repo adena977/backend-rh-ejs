@@ -1,0 +1,54 @@
+
+
+<div class="content-wrapper">
+  <div class="container-fluid py-4">
+    <h2>Ajouter une évaluation</h2>
+
+ 
+
+    <form action="/evaluations/ajouter" method="POST">
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="employe_id" class="form-label">Employé</label>
+          <select name="employe_id" id="employe_id" class="form-select" required>
+            <option value="">-- Sélectionner un employé --</option>
+            <% employes.forEach(e => { %>
+              <option value="<%= e.id %>"><%= e.nom %> <%= e.prenom %></option>
+            <% }) %>
+          </select>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="date" class="form-label">Date d'évaluation</label>
+          <input type="date" class="form-control" id="date" name="date" required>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="note" class="form-label">Note (/10)</label>
+          <input type="number" class="form-control" id="note" name="note" min="0" max="10" step="0.1" required>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="evaluateur_id" class="form-label">Évaluateur</label>
+          <select name="evaluateur_id" id="evaluateur_id" class="form-select" required>
+            <option value="">-- Sélectionner un évaluateur --</option>
+            <% evaluateurs.forEach(u => { %>
+              <option value="<%= u.id %>"><%= u.username %> - <%= u.role %></option>
+            <% }) %>
+          </select>
+        </div>
+
+        <div class="col-12 mb-3">
+          <label for="commentaire" class="form-label">Commentaire</label>
+          <textarea class="form-control" id="commentaire" name="commentaire" rows="3"></textarea>
+        </div>
+
+        <div class="col-12 text-end">
+          <a href="/evaluations" class="btn btn-secondary">Annuler</a>
+          <button type="submit" class="btn btn-primary">Enregistrer</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+

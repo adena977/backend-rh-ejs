@@ -1,0 +1,23 @@
+<!-- 📁 views/formations/edit.ejs -->
+<div class="container py-4">
+    <h1>Modifier la formation</h1>
+    <form method="POST" action="/formations/modifier/<%= formation.id %>">
+        <div class="mb-3">
+            <label>Titre</label>
+            <input type="text" name="titre" class="form-control" value="<%= formation.titre %>" required>
+        </div>
+        <div class="mb-3">
+            <label>Date début</label>
+            <input type="date" name="date_debut" class="form-control" value="<%= formation.date_debut %>">
+        </div>
+        <div class="mb-3">
+            <label>Date fin</label>
+            <input type="date" name="date_fin" class="form-control" value="<%= formation.date_fin %>">
+        </div>
+        <div class="mb-3">
+            <label>Formateur</label>
+            <input type="text" name="formateur" class="form-control" value="<%= formation.formateur %>">
+        </div>
+        <button type="submit" class="btn btn-success">Mettre à jour</button>
+    </form>
+</div>

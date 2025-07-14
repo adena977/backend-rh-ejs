@@ -1,0 +1,52 @@
+
+
+<div class="container mt-4">
+  <h2>Liste des évaluations</h2>
+
+
+  <div class="mb-3">
+    <a href="/evaluations/ajouter" class="btn btn-primary">➕ Nouvelle évaluation</a>
+  </div>
+
+  <table class="table table-bordered table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th>#</th>
+        <th>Employé</th>
+        <th>Date</th>
+        <th>Note</th>
+        <th>Commentaire</th>
+        <th>Évaluateur</th>
+        <th>Statut</th>
+        <% if (user.role === 'admin' || user.role === 'manager') { %>
+          <th>Actions</th>
+        <% } %>
+      </tr>
+    </thead>
+    <tbody>
+      <% evaluations.forEach((eval, index) => { %>
+        <tr>
+          <td><%= index + 1 %></td>
+<td><%= eval.employe_nom %> <%= eval.employe_prenom %></td> <!-- ✅ Correct -->
+          <td><%= eval.date.toISOString().split('T')[0] %></td>
+          <td><%= eval.note ?? 'N/A' %></td>
+          <td><%= eval.commentaire || '-' %></td>
+          <td><%= eval.evaluateur_username || 'Non défini' %></td>
+          <td><span class="badge bg-<%= eval.note >= 15 ? 'success' : eval.note >= 10 ? 'warning' : 'danger' %>">
+            <%= eval.note >= 8 ? 'Excellent' : eval.note >= 5 ? 'Moyen' : 'Insuffisant' %>
+          </span></td>
+          
+          <% if (user.role === 'admin' || user.role === 'manager') { %>
+            <td>
+              <a href="/evaluations/modifier/<%= eval.id %>" class="btn btn-sm btn-warning">✏️</a>
+              <form action="/evaluations/supprimer/<%= eval.id %>" method="POST" class="d-inline" onsubmit="return confirm('Confirmer la suppression ?');">
+                <button class="btn btn-sm btn-danger">🗑️</button>
+              </form>
+            </td>
+          <% } %>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+

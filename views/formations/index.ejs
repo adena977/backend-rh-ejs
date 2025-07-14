@@ -1,0 +1,38 @@
+<!-- 📁 views/formations/index.ejs -->
+<div class="container py-4">
+    <h1 class="mb-4">Liste des formations</h1>
+    <a href="/formations/ajouter" class="btn btn-primary mb-3">Ajouter une formation</a>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Dates</th>
+                <th>Formateur</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% formations.forEach(f=> { %>
+                <tr>
+                    <td>
+                        <%= f.titre %>
+                    </td>
+                    <td>
+                        <%= f.date_debut %> au <%= f.date_fin %>
+                    </td>
+                    <td>
+                        <%= f.formateur %>
+                    </td>
+                    <td>
+                        <a href="/formations/modifier/<%= f.id %>" class="btn btn-warning btn-sm">Modifier</a>
+                        <form action="/formations/supprimer/<%= f.id %>" method="POST" style="display:inline;">
+                            <button type="submit" class="btn btn-danger btn-sm"
+                                onclick="return confirm('Supprimer ?')">Supprimer</button>
+                        </form>
+                        <a href="/formations/<%= f.id %>/inscriptions" class="btn btn-info btn-sm">Inscriptions</a>
+                    </td>
+                </tr>
+                <% }) %>
+        </tbody>
+    </table>
+</div>

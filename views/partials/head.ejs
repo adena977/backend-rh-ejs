@@ -1,0 +1,90 @@
+<!-- partials/head.ejs -->
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Favicon et icônes -->
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png">
+
+  <!-- Titre dynamique -->
+  <title>
+    <%= title || "RH - Électricité de Djibouti" %>
+  </title>
+
+  <!-- Fonts et icônes -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,900" />
+  <link href="/assets/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="/assets/css/nucleo-svg.css" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" />
+
+  <!-- CSS Material Dashboard (inclut Bootstrap de base) -->
+  <link id="pagestyle" href="/assets/css/material-dashboard.css?v=3.2.0" rel="stylesheet" />
+
+  <!-- Ton CSS personnalisé -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <link href="/css/style.css" rel="stylesheet" />
+  <style>
+    /* Champs input, select, textarea */
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="number"],
+    input[type="date"],
+    input[type="file"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px 15px;
+      font-size: 15px;
+      border: 1px solid #ced4da;
+      /* ✅ Garde la bordure visible */
+      border-radius: 6px;
+      background-color: #f9fafb;
+      color: #374151;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* ✅ Quand l'utilisateur clique dans le champ */
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border: 1px solid var(--primary-color);
+      /* ✅ Garde une bordure nette */
+      outline: none;
+      background-color: #fff;
+      box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.25);
+      /* ✅ Ajoute un léger halo bleu */
+    }
+
+
+    /* Placeholder */
+    input::placeholder,
+    textarea::placeholder {
+      color: #9ca3af;
+      opacity: 1;
+    }
+
+    /* Champ invalide */
+    .is-invalid {
+      border-color: var(--danger-color);
+    }
+
+    .is-invalid:focus {
+      box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.2);
+    }
+
+    .invalid-feedback {
+      color: var(--danger-color);
+      font-size: 14px;
+      margin-top: 6px;
+      display: block;
+    }
+  </style>
+
+</head>

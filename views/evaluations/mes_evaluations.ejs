@@ -1,0 +1,40 @@
+
+<div class="container mt-5">
+  <h2>Mes évaluations</h2>
+
+  <% if (evaluations.length === 0) { %>
+    <div class="alert alert-info">Aucune évaluation trouvée pour le moment.</div>
+  <% } else { %>
+    <table class="table table-bordered table-hover">
+      <thead class="table-dark">
+        <tr>
+          <th>#</th>
+          <th>Date</th>
+          <th>Note (/10)</th>
+          <th>Commentaire</th>
+          <th>Évaluateur</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% evaluations.forEach((ev, idx) => { %>
+          <tr>
+            <td><%= idx + 1 %></td>
+            <td><%= ev.date.toISOString().split('T')[0] %></td>
+
+            <td>
+              <span class="badge bg-<%= ev.note >= 8 ? 'success' 
+                                         : ev.note >= 5 ? 'warning' 
+                                                         : 'danger' %>">
+                <%= ev.note ?? 'N/A' %>
+              </span>
+            </td>
+
+            <td><%= ev.commentaire || '-' %></td>
+            <td><%= ev.evaluateur_username || 'Non défini' %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  <% } %>
+</div>
+

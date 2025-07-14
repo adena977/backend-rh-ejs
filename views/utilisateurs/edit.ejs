@@ -1,0 +1,46 @@
+
+<div class="container mt-4">
+  <h3>Modifier un utilisateur</h3>
+
+  <form action="/utilisateurs/modifier/<%= utilisateur.id %>" method="POST">
+    <div class="row">
+
+      <div class="col-md-6 mb-3">
+        <label for="username" class="form-label">Nom d'utilisateur</label>
+        <input type="text" name="username" id="username" value="<%= utilisateur.username %>" class="form-control" required>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="mot_de_passe" class="form-label">Nouveau mot de passe (laisser vide pour ne pas changer)</label>
+        <input type="password" name="mot_de_passe" id="mot_de_passe" class="form-control">
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="role" class="form-label">Rôle</label>
+        <select name="role" id="role" class="form-control" required>
+          <option value="admin" <%= utilisateur.role === 'admin' ? 'selected' : '' %>>Admin</option>
+          <option value="manager" <%= utilisateur.role === 'manager' ? 'selected' : '' %>>Manager</option>
+          <option value="employe" <%= utilisateur.role === 'employe' ? 'selected' : '' %>>Employé</option>
+        </select>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="employe_id" class="form-label">Employé lié</label>
+        <select name="employe_id" id="employe_id" class="form-control">
+          <option value="">-- Aucun --</option>
+          <% employes.forEach(emp => { %>
+            <option value="<%= emp.id %>" <%= utilisateur.employe_id === emp.id ? 'selected' : '' %>>
+              <%= emp.nom %> <%= emp.prenom %> (<%= emp.code_employe %>)
+            </option>
+          <% }) %>
+        </select>
+      </div>
+
+    </div>
+
+    <button type="submit" class="btn btn-primary">Mettre à jour</button>
+    <a href="/utilisateurs" class="btn btn-secondary">Annuler</a>
+  </form>
+</div>
+
+<%- include('../partials/footer') %>

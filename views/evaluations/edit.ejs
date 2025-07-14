@@ -1,0 +1,45 @@
+
+<div class="container mt-5">
+  <h2>Modifier une évaluation</h2>
+
+ 
+
+  <form action="/evaluations/modifier/<%= evaluation.id %>" method="POST">
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="employe_id" class="form-label">Employé évalué</label>
+        <select name="employe_id" id="employe_id" class="form-select" required>
+          <option value="">-- Sélectionner un employé --</option>
+          <% employes.forEach(emp => { %>
+            <option value="<%= emp.id %>" <%= emp.id === evaluation.employe_id ? 'selected' : '' %>>
+              <%= emp.nom %> <%= emp.prenom %>
+            </option>
+          <% }) %>
+        </select>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="date" class="form-label">Date</label>
+        <input type="date" name="date" id="date" class="form-control" value="<%= evaluation.date.toISOString().split('T')[0] %>" required>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4 mb-3">
+        <label for="note" class="form-label">Note</label>
+        <input type="number" name="note" id="note" class="form-control" value="<%= evaluation.note %>" min="0" max="20" required>
+      </div>
+
+      <div class="col-md-8 mb-3">
+        <label for="commentaire" class="form-label">Commentaire</label>
+        <textarea name="commentaire" id="commentaire" class="form-control" rows="3"><%= evaluation.commentaire || '' %></textarea>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-between">
+      <a href="/evaluations" class="btn btn-secondary">↩️ Retour</a>
+      <button type="submit" class="btn btn-success">💾 Mettre à jour</button>
+    </div>
+  </form>
+</div>
+

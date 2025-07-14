@@ -1,0 +1,21 @@
+<!-- views/error.ejs -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Erreur</title>
+ 
+</head>
+<body>
+  <div class="container mt-5">
+    <h1>❌ Une erreur est survenue</h1>
+    <p><%= message || "Une erreur inattendue est survenue." %></p>
+
+    <% if (error && error.stack) { %>
+      <pre style="color:red"><%= error.stack %></pre>
+    <% } %>
+
+    <a href="/" class="btn btn-primary mt-3">Retour à l'accueil</a>
+  </div>
+</body>
+</html>

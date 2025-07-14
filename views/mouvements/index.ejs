@@ -1,0 +1,47 @@
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4>Mouvements du personnel</h4>
+        <a href="/mouvements_rh/ajouter" class="btn btn-sm btn-primary">
+            <i class="bi bi-plus-circle me-1"></i> Ajouter un mouvement
+        </a>
+    </div>
+
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Employé</th>
+                <th>Date</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% mouvements.forEach(m=> { %>
+                <tr>
+                    <td>
+                        <%= m.nom %>
+                            <%= m.prenom %>
+                    </td>
+                    <td>
+                        <%= m.date.toISOString().slice(0,10) %>
+                    </td>
+                    <td>
+                        <%= m.type %>
+                    </td>
+                    <td>
+                        <%= m.description %>
+                    </td>
+                    <td>
+                        <a href="/mouvements_rh/modifier/<%= m.id %>" class="btn btn-sm btn-warning">Modifier</a>
+                        <form action="/mouvements_rh/supprimer/<%= m.id %>" method="POST" class="d-inline"
+                            onsubmit="return confirm('Supprimer ce mouvement ?')">
+                            <button class="btn btn-sm btn-danger">Supprimer</button>
+                        </form>
+                    </td>
+                </tr>
+                <% }) %>
+        </tbody>
+    </table>
+</div>

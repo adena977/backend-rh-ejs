@@ -1,0 +1,25 @@
+<div class="container mt-4">
+  <h3>Historique des actions</h3>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Utilisateur</th>
+        <th>Action</th>
+        <th>Table</th>
+        <th>ID Élément</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% logs.forEach(log => { %>
+        <tr>
+          <td><%= log.date_action.toLocaleString() %></td>
+          <td><%= log.utilisateur_nom %></td>
+          <td><%= log.action %></td>
+          <td><%= log.table_modifiee %></td>
+          <td><%= log.id_element %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>

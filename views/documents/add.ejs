@@ -1,0 +1,30 @@
+<div class="container mt-4">
+    <h2>Ajouter un document</h2>
+    <form action="/documents/ajouter" method="POST" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label>Employé</label>
+            <select name="employe_id" class="form-select">
+                <option value="">Aucun</option>
+                <% employes.forEach(e=> { %>
+                    <option value="<%= e.id %>">
+                        <%= e.nom %>
+                            <%= e.prenom %>
+                    </option>
+                    <% }) %>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label>Type</label>
+            <input type="text" name="type" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label>Titre</label>
+            <input type="text" name="titre" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label>Fichier</label>
+            <input type="file" name="fichier" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-success">Ajouter</button>
+    </form>
+</div>

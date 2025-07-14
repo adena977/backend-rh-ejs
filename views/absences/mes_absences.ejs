@@ -1,0 +1,24 @@
+
+<h4 class="mb-4">Mes absences exceptionnelles</h4>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Date début</th>
+      <th>Date fin</th>
+      <th>Motif</th>
+      <th>Statut</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% absences.forEach(a => { %>
+      <tr>
+        <td><%= a.date_debut %></td>
+        <td><%= a.date_fin %></td>
+        <td><%= a.motif %></td>
+        <td><%= a.statut %></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+

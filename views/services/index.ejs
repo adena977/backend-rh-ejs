@@ -1,0 +1,39 @@
+<div class="container mt-4">
+    <h2>Liste des services</h2>
+
+    <a href="/services/ajouter" class="btn btn-primary mb-3">➕ Ajouter un service</a>
+
+    <% if (services.length===0) { %>
+        <div class="alert alert-info">Aucun service trouvé.</div>
+        <% } else { %>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% services.forEach(service=> { %>
+                        <tr>
+                            <td>
+                                <%= service.nom %>
+                            </td>
+                            <td>
+                                <%= service.description %>
+                            </td>
+                            <td>
+                                <a href="/services/modifier/<%= service.id %>" class="btn btn-warning btn-sm">✏️
+                                    Modifier</a>
+                                <form action="/services/supprimer/<%= service.id %>" method="POST" class="d-inline"
+                                    onsubmit="return confirm('Supprimer ce service ?')">
+                                    <button type="submit" class="btn btn-danger btn-sm">🗑️ Supprimer</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+            <% } %>
+</div>

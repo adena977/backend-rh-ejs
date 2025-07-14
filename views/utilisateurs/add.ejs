@@ -1,0 +1,45 @@
+
+<div class="container mt-4">
+  <h3>Ajouter un utilisateur</h3>
+
+  <form action="/utilisateurs/ajouter" method="POST">
+    <div class="row">
+
+      <div class="col-md-6 mb-3">
+        <label for="username" class="form-label">Nom d'utilisateur</label>
+        <input type="text" name="username" id="username" class="form-control" required>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="mot_de_passe" class="form-label">Mot de passe</label>
+        <input type="password" name="mot_de_passe" id="mot_de_passe" class="form-control" required>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="role" class="form-label">Rôle</label>
+        <select name="role" id="role" class="form-control" required>
+          <option value="">-- Sélectionner un rôle --</option>
+          <option value="admin">Admin</option>
+          <option value="manager">Manager</option>
+          <option value="employe">Employé</option>
+        </select>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="employe_id" class="form-label">Employé lié</label>
+        <select name="employe_id" id="employe_id" class="form-control">
+          <option value="">-- Aucun --</option>
+          <% employes.forEach(emp => { %>
+            <option value="<%= emp.id %>"><%= emp.nom %> <%= emp.prenom %> (<%= emp.code_employe %>)</option>
+          <% }) %>
+        </select>
+      </div>
+
+    </div>
+
+    <button type="submit" class="btn btn-success">Enregistrer</button>
+    <a href="/utilisateurs" class="btn btn-secondary">Annuler</a>
+  </form>
+</div>
+
+<%- include('../partials/footer') %>

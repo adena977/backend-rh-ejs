@@ -1,0 +1,49 @@
+<div class="container">
+    <h2 class="mt-4 mb-3">Liste des congés</h2>
+    <a href="/conges/ajouter" class="btn btn-success mb-3">Ajouter un congé</a>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Employé</th>
+                <th>Type</th>
+                <th>Motif</th>
+                <th>Début</th>
+                <th>Fin</th>
+                <th>Statut</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% conges.forEach(c=> { %>
+                <tr>
+                    <td>
+                        <%= c.nom %>
+                            <%= c.prenom %>
+                    </td>
+                    <td>
+                        <%= c.type %>
+                    </td>
+                    <td>
+                        <%= c.motif %>
+                    </td>
+                    <td>
+                        <%= c.date_debut %>
+                    </td>
+                    <td>
+                        <%= c.date_fin %>
+                    </td>
+                    <td>
+                        <%= c.statut %>
+                    </td>
+                    <td>
+                        <a href="/conges/modifier/<%= c.id %>" class="btn btn-sm btn-primary">Modifier</a>
+                        <form action="/conges/supprimer/<%= c.id %>" method="POST" class="d-inline">
+                            <button type="submit" class="btn btn-sm btn-danger"
+                                onclick="return confirm('Supprimer ce congé ?')">Supprimer</button>
+                        </form>
+                    </td>
+                </tr>
+                <% }) %>
+        </tbody>
+    </table>
+</div>

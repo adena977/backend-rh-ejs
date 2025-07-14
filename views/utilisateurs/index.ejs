@@ -1,0 +1,56 @@
+
+
+<div class="container mt-4">
+  <h2 class="mb-4">Liste des utilisateurs</h2>
+
+
+
+  <div class="mb-3">
+    <a href="/utilisateurs/ajouter" class="btn btn-primary">➕ Ajouter un utilisateur</a>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover">
+      <thead class="table-light">
+        <tr>
+          <th>ID</th>
+          <th>Nom d'utilisateur</th>
+          <th>Rôle</th>
+          <th>Employé associé</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (users && users.length > 0) { %>
+          <% users.forEach(user => { %>
+            <tr>
+              <td><%= user.id %></td>
+              <td><%= user.username %></td>
+              <td><span class="badge bg-info text-dark"><%= user.role %></span></td>
+              <td>
+                <% if (user.nom && user.prenom) { %>
+                  <%= user.nom %> <%= user.prenom %> (<%= user.code_employe %>)
+                <% } else { %>
+                  <span class="text-muted">Non lié</span>
+                <% } %>
+              </td>
+              <td>
+                <a href="/utilisateurs/modifier/<%= user.id %>" class="btn btn-sm btn-warning">✏️ Modifier</a>
+
+                <form action="/utilisateurs/supprimer/<%= user.id %>" method="POST" class="d-inline" onsubmit="return confirm('Supprimer cet utilisateur ?');">
+                  <button type="submit" class="btn btn-sm btn-danger">🗑️ Supprimer</button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        <% } else { %>
+          <tr>
+            <td colspan="5" class="text-center text-muted">Aucun utilisateur trouvé.</td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>
