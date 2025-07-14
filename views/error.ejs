@@ -1,21 +1,120 @@
-<!-- views/error.ejs -->
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Erreur</title>
- 
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #f8f9fa;
+      color: #212529;
+      padding: 20px;
+      margin: 0;
+    }
+
+    .error-container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 30px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      color: #dc3545;
+      margin-bottom: 20px;
+    }
+
+    .alert {
+      padding: 15px;
+      background-color: #f8d7da;
+      border: 1px solid #f5c6cb;
+      border-radius: 4px;
+      color: #721c24;
+      margin-bottom: 20px;
+    }
+
+    pre {
+      background: #f8f9fa;
+      padding: 15px;
+      border-radius: 4px;
+      overflow-x: auto;
+      font-size: 14px;
+      white-space: pre-wrap;
+    }
+
+    .btn-group {
+      margin-top: 30px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 8px 16px;
+      background: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .btn-secondary {
+      background: #6c757d;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+    .text-muted {
+      color: #6c757d;
+      font-size: 14px;
+      margin-top: 20px;
+      display: block;
+    }
+  </style>
 </head>
+
 <body>
-  <div class="container mt-5">
+  <div class="error-container">
     <h1>❌ Une erreur est survenue</h1>
-    <p><%= message || "Une erreur inattendue est survenue." %></p>
 
-    <% if (error && error.stack) { %>
-      <pre style="color:red"><%= error.stack %></pre>
-    <% } %>
+    <div class="alert">
+      <strong>
+        <%= message || "Une erreur inattendue est survenue." %>
+      </strong>
+      <% if (error && error.status) { %>
+        <div>Code d'erreur: <%= error.status %>
+        </div>
+        <% } %>
+    </div>
 
-    <a href="/" class="btn btn-primary mt-3">Retour à l'accueil</a>
+    <% if (typeof process !=='undefined' && process.env.NODE_ENV !=='production' && error && error.stack) { %>
+      <details>
+        <summary>Détails techniques</summary>
+        <pre><%= error.stack %></pre>
+      </details>
+      <% } %>
+
+        <div class="btn-group">
+          <a href="/" class="btn">Retour à l'accueil</a>
+          <button onclick="history.back()" class="btn btn-secondary">Page précédente</button>
+        </div>
+
+        <% if (typeof timestamp !=='undefined' ) { %>
+          <span class="text-muted">Erreur survenue le: <%= new Date(timestamp).toLocaleString() %></span>
+          <% } else { %>
+            <span class="text-muted">Erreur survenue le: <%= new Date().toLocaleString() %></span>
+            <% } %>
   </div>
 </body>
+
 </html>
